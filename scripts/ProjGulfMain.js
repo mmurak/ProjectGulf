@@ -166,6 +166,7 @@ document.addEventListener("keydown", (evt) => {
 	if (G.playPause.disabled)  return;
 	if (evt.key == " ") {
 		playPauseControl();
+		evt.preventDefault();
 	} else if (evt.key == "ArrowLeft") {
 		G.flexPlayer.setTime(G.flexPlayer.getCurrentTime() - 3.0);
 	} else if (evt.key == "ArrowRight") {
