@@ -84,15 +84,10 @@ G.inputFile.addEventListener("change", (e) => {
 		]);
 	}
 });
+G.inputFile.addEventListener("focus", () => {G.inputFile.blur()});	// this is to prevent activation by key-input.
 
 // Play/Pause control
-G.playPause.addEventListener("click", () => {
-	if (G.flexPlayer.isPlaying()) {
-		G.flexPlayer.pause();
-	} else {
-		G.flexPlayer.play();
-	}
-});
+G.playPause.addEventListener("click", playPauseControl);
 
 // Reset play speed
 G.speedHeader.addEventListener("click", () => {
@@ -130,7 +125,6 @@ function readyCB() {
 		"PitchVal",
 		"RecButton",
 	]);
-	console.log("GO");
 	G.speedVal.value = 1.0;
 	G.speedDigits.innerHTML = Number(G.speedVal.value).toFixed(2);
 	G.pitchVal.value = 0;
@@ -159,6 +153,28 @@ function pauseCB() {
 	]);
 	G.playPause.value = "Play";
 }
+
+function playPauseControl() {
+	if (G.flexPlayer.isPlaying()) {
+		G.flexPlayer.pause();
+	} else {
+		G.flexPlayer.play();
+	}
+}
+
+document.addEventListener("keydown", (evt) => {
+	if (G.playPause.disabled)  return;
+	if (evt.key == " ") {
+		playPauseControl();
+	} else if (evt.key == "ArrowLeft") {
+		G.flexPlayer.setTime(G.flexPlayer.getCurrentTime() - 3.0);
+	} else if (evt.key == "ArrowRight") {
+		G.flexPlayer.setTime(G.flexPlayer.getCurrentTime() + 3.0);
+	} else if ((evt.key >= "1") && (evt.key <= 9)) {
+		let delta = (evt.ctrlKey) ? -Number(evt.key) : Number(evt.key);
+		G.flexPlayer.setTime(G.flexPlayer.getCurrentTime() + delta);
+	}
+});
 
 /*
  * END OF Base waveSurfer
