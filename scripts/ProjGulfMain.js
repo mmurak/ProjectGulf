@@ -265,6 +265,8 @@ G.modelPlay.onclick = () => {
 		G.modelSurfer.play();
 	}
 }
+G.modelPlay.addEventListener("focus", () => {G.modelPlay.blur()});	// this is to prevent activation by key-input.
+
 function readyCallback() {
 }
 function playCallback() {
@@ -355,6 +357,7 @@ G.endBack.addEventListener("click", () => {
 	if (G.fixedDuration < 0) G.fixedDuration = 0;
 	createModelSurferBody();
 });
+G.endBack.addEventListener("focus", () => { G.endBack.blur(); });
 G.endForward.addEventListener("click", () => {
 	let delta = getDelta();
 	let t = G.flexPlayer.getCurrentTime() + delta;
@@ -366,6 +369,7 @@ G.endForward.addEventListener("click", () => {
 	if (G.fixedDuration > fence) G.fixedDuration = fence;
 	createModelSurferBody();
 });
+G.endForward.addEventListener("focus", () => { G.endForward.blur(); });
 G.startBack.addEventListener("click", () => {
 	let delta = getDelta();
 	G.fixedDuration += (delta * 1000);
@@ -373,12 +377,14 @@ G.startBack.addEventListener("click", () => {
 	if (G.fixedDuration > fence) G.fixedDuration = fence;
 	createModelSurferBody();
 });
+G.startBack.addEventListener("focus", () => { G.startBack.blur(); });
 G.startForward.addEventListener("click", () => {
 	let delta = getDelta();
 	G.fixedDuration -= (delta * 1000);
 	if (G.fixedDuration < 0) G.fixedDuration = 0;
 	createModelSurferBody();
 });
+G.startForward.addEventListener("focus", () => { G.startForward.blur(); });
 function getDelta() {
 	return Number(G.speedVal.value) * 0.1;
 }

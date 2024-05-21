@@ -52,6 +52,7 @@ export class RecorderSurfer {
 		button.disabled = true;
 		button.style = "width: 20%; height: 28px;";
 		button.onclick = () => this.recordedSurfer.playPause();
+		button.addEventListener("focus", () => {button.blur()});
 		this.recordedSurfer.on('pause', () => (button.textContent = 'Play'));
 		this.recordedSurfer.on('play', () => (button.textContent = 'Pause'));
 		// Save link
