@@ -1,0 +1,36 @@
+html{
+	background-color: powderblue;
+}
+#PlayPause{
+	width: 20%;
+	height: 28px;
+	background-color: #000088;
+	color: white;
+}
+#PlayPause:disabled{
+	color: lightgrey;
+	background-color: #4682b4;
+}
+#SpeedVal{
+	width: 50%;
+}
+#PitchVal{
+	width: 50%;
+}
+.OpButton{
+	height: 28px;
+}
+#ModelPlay{
+	width: 20%;
+}
+#RecButton{
+	width: 80%;
+	height: 60px;
+	background-color: #ff6600;
+	color: white;
+	font-size: 18pt;
+}
+#RecButton:disabled{
+	color: lightgrey;
+	background-color: #e9967a;
+}

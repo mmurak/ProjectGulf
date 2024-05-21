@@ -1,2 +1,2 @@
 # ProjectGulf
-Repeating practise helper
+Repeating practice helper

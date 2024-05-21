@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Project Gulf phase two</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" href="kiwi-bird.png">
+		<link rel="stylesheet" href="./ProjectGulf.css">
+	</head>
+	<body>
+		<input type="file" id="InputFile" accept="audio/*" />
+		<div id="waveform"></div>
+		<input type="button" value="Play" id="PlayPause" />
+		<br>
+		<label for="SpeedVal" id="SpeedHeader">Speed: </label>
+		<label for="SpeedVal" id="SpeedDigits">1.00</label>
+		<input type="range" min="0.2" max="2.0" value="1.0" step="0.01" id="SpeedVal" />
+		<br>
+		<label for="PitchVal" id="PitchHeader">Pitch: </label>
+		<label for="PitchVal" id="PitchDigits">0.00</label>
+		<input type="range" min="-1200" max="1200" value="0" step="1" id="PitchVal" />
+		<br>
+
+
+		<select id="mic-select" hidden>
+			<option value="" hidden>Select mic</option>
+		</select>
+
+		<input type="button" id="RecButton" value="Press to Record">
+
+		<p id="Progress">00:00</p>
+
+		<div id="mic"></div>
+		<div id="modelDiv" style="margin: 1rem 0"></div>
+		<input type="button" class="OpButton" id="StartBack" value="◀"></input>
+		<input type="button" class="OpButton" id="StartForward" value="▶"></input>
+		<input type="button" class="OpButton" id="ModelPlay" value="Play model track"></input>
+		<input type="button" class="OpButton" id="EndBack" value="◀"></input>
+		<input type="button" class="OpButton" id="EndForward" value="▶"></input>
+		<div id="recordings" style="margin: 1rem 0"></div>
+
+		<script src="https://unpkg.com/tone"></script>
+		<script type="module" src="./scripts/ProjGulfMain.js"></script>
+
+	</body>
+</html>
